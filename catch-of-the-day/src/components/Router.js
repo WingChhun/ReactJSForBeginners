@@ -7,12 +7,9 @@ import NotFound from "./NotFound";
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      {/*Switch between paths, render the corresponding component*/}
-      <Route exact path="/" component={StorePicker} />
-
-      <Route exact path="/store/:storeId" component={App} />
-
-      {/*Error 404 page when path is not handled*/}
+      <Route exact path={process.env.PUBLIC_URL +"/"} component={StorePicker} />
+{/*Pass store ID as a query parameter, accessible within props.match*/}
+      <Route path={process.env.PUBLIC_URL+"/store/:storeId"} component={App} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
