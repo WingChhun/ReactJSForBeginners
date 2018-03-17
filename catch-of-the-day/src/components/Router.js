@@ -1,16 +1,15 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import StorePicker from "./StorePicker";
 import App from "./App";
 import NotFound from "./NotFound";
 
 const Router = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
-      <Route exact path={process.env.PUBLIC_URL +"/"} component={StorePicker} />
-{/*Pass store ID as a query parameter, accessible within props.match*/}
-      <Route path={process.env.PUBLIC_URL+"/store/:storeId"} component={App} />
-      <Route component={NotFound} />
+      <Route exact path="/" component={StorePicker}/> {/*Pass store ID as a query parameter, accessible within props.match*/}
+      <Route path="/store/:storeId" component={App}/>
+      <Route component={NotFound}/>
     </Switch>
   </BrowserRouter>
 );
